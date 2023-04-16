@@ -76,11 +76,5 @@ def MenuPrincipal(request):
     return render(request,'core/menuPrincipal.html',contexto)
 
 def INICIOSESION(request):
-    
-    vehiculos = Vehiculo.objects.all()
-    datos={
-        'vehiculos':vehiculos
-    }
-    
-    return render(request,'core/INICIOSESION.html',datos)
+     return render(request,'core/INICIOSESION.html')
     
