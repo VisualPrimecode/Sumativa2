@@ -63,3 +63,14 @@ def form_del_vehiculo(request, id):
         datos['mensaje'] = "Eliminado correctamente"
       
     return render(request, 'core/form_del_vehiculo.html',datos)
+def MenuPrincipal(request):
+    
+    vehiculos = Vehiculo.objects.all()
+    datos={
+        'vehiculos':vehiculos
+    }
+    
+    hijo=persona("Juan Perez","7")
+    lista=["Accion","terror","fentinol"]
+    contexto={"nombre":"Claudio Andres", "Categorias":lista,"hijo":hijo,"Vehiculos":vehiculos}
+    return render(request,'core/menuPrincipal.html',contexto)
