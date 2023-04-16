@@ -74,3 +74,13 @@ def MenuPrincipal(request):
     lista=["Accion","terror","fentinol"]
     contexto={"nombre":"Claudio Andres", "Categorias":lista,"hijo":hijo,"Vehiculos":vehiculos}
     return render(request,'core/menuPrincipal.html',contexto)
+
+def INICIOSESION(request):
+    
+    vehiculos = Vehiculo.objects.all()
+    datos={
+        'vehiculos':vehiculos
+    }
+    
+    return render(request,'core/INICIOSESION.html',datos)
+    
