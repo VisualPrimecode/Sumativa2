@@ -79,4 +79,6 @@ def INICIOSESION(request):
      return render(request,'core/INICIOSESION.html')
 def RecuperarContra(request):
      return render(request,'core/RecuperarContra.html')
+def registro(request):
+    return render(request,'core/registro.html')
     
