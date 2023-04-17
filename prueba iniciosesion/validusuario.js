@@ -62,6 +62,6 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('#register-submit2').click(function(e){
         e.preventDefault();
-        window.location.href = "file:///C:/Users/Shunin/Documents/GitHub/Sumativa2/PaginadeJuegos/prueba%20iniciosesion/registro.html";
+        window.location.href = "file:///C:/Users/Shunin/Documents/GitHub/Sumativa2/prueba%20iniciosesion/registro.html";
     });
 });
