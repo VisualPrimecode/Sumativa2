@@ -77,4 +77,6 @@ def MenuPrincipal(request):
 
 def INICIOSESION(request):
      return render(request,'core/INICIOSESION.html')
+def RecuperarContra(request):
+     return render(request,'core/RecuperarContra.html')
     
