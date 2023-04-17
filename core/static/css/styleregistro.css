@@ -1,6 +1,8 @@
-body {
+body{ 
+	background-image: url('/static/img/fondoHOME.jpg');
     padding-top: 90px;
-    background-image: url(fondo.jpg);
+    
+	
 }
 .panel-login {
 	border-color: #ccc;
