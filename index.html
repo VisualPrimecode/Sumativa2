@@ -10,3 +10,11 @@
     
 </body>
 </html>
+
+
+import cx_Oracle
+
+dsn_tns = cx_Oracle.makedsn('127.0.0.1', 1521, 'orcl')
+connection = cx_Oracle.connect(user='c##prueba', password='prueba', dsn=dsn_tns)
+
+print(connection.version)
