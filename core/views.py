@@ -82,19 +82,26 @@ def RecuperarContra(request):
      return render(request,'core/RecuperarContra.html')
 def registro(request):
     return render(request,'core/registro.html')
+
+from django.core.exceptions import ValidationError
+
 def form_usuario(request):
     context = {
-        'form': UsuarioForm()  # Pasa el formulario al contexto de la plantilla
+        'form': UsuarioForm()  # Pasar el formulario al contexto de la plantilla
     }
     if request.method == 'POST':
         formulario = UsuarioForm(request.POST)
         if formulario.is_valid():
             try:
                 usuario = formulario.save(commit=False)
-                # Realiza cualquier otra operación adicional antes de guardar el modelo
+                # Realizar cualquier otra operación adicional antes de guardar el modelo
                 usuario.save()
                 context['mensaje'] = "Guardados correctamente"
             except ValidationError as e:
-                # Maneja la excepción de validación personalizada
-                formulario.add_error('nomUser', e)  # Agrega el error al formulario
+                # Manejar la excepción de validación personalizada
+                formulario.add_error(None, e)  # Agregar el error al formulario
+        else:
+            # Si el formulario no es válido, mostrar los errores en el contexto
+            context['form'] = formulario
     return render(request, 'core/form_usuario.html', context)
+
