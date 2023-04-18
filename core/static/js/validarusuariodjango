@@ -1,0 +1,32 @@
+$(document).ready(function() {
+  // Seleccionamos el formulario por su ID
+  var formulario = $("#formulario");
+
+  // Agregamos el evento submit al formulario
+  formulario.on("submit", function(event) {
+    event.preventDefault();
+
+    // Obtenemos los valores del formulario
+    var nombreUsuario = $("#id_nomUser").val();
+    var correoUsuario = $("#id_correo").val();
+    var claveUsuario = $("#id_clave").val();
+
+    // Validamos los campos del formulario
+    if (nombreUsuario === "hola") {
+      $("#error").text("Por favor, ingrese un nombre de usuario");
+    } else if (correoUsuario === "") {
+      $("#error").text("Por favor, ingrese un correo electrónico");
+    } else if (claveUsuario === "") {
+      $("#error").text("Por favor, ingrese una clave");
+    } else {
+      // Si todos los campos son válidos, enviamos el formulario
+      formulario.submit();
+    }
+  });
+
+  // Agregamos el evento click al botón Limpiar
+  $("#limpiar").on("click", function() {
+    formulario.trigger("reset");
+    $("#error").text("");
+  });
+});

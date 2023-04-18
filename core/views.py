@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import VehiculoForm
-from .models import Vehiculo
+from .forms import VehiculoForm,UsuarioForm
+from .models import Vehiculo,Usuario
+from django.core.exceptions import ValidationError
 
 # Create your views here.
 class persona:
@@ -81,4 +82,19 @@ def RecuperarContra(request):
      return render(request,'core/RecuperarContra.html')
 def registro(request):
     return render(request,'core/registro.html')
-    
+def form_usuario(request):
+    context = {
+        'form': UsuarioForm()  # Pasa el formulario al contexto de la plantilla
+    }
+    if request.method == 'POST':
+        formulario = UsuarioForm(request.POST)
+        if formulario.is_valid():
+            try:
+                usuario = formulario.save(commit=False)
+                # Realiza cualquier otra operación adicional antes de guardar el modelo
+                usuario.save()
+                context['mensaje'] = "Guardados correctamente"
+            except ValidationError as e:
+                # Maneja la excepción de validación personalizada
+                formulario.add_error('nomUser', e)  # Agrega el error al formulario
+    return render(request, 'core/form_usuario.html', context)
