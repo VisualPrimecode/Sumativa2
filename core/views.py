@@ -60,3 +60,18 @@ def form_usuario(request):
             context['form'] = formulario
     return render(request, 'core/form_usuario.html', context)
 
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+
+def INICIOSESION(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            messages.success(request, 'Has iniciado sesión exitosamente.')
+            return redirect('MenuPrincipal')
+        else:
+            messages.error(request, 'El nombre de usuario o la contraseña son incorrectos.')
+    return render(request, 'core/INICIOSESION.html')
+
