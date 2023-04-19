@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import VehiculoForm,UsuarioForm
-from .models import Vehiculo,Usuario
+from .forms import UsuarioForm
+from .models import Usuario
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -16,15 +16,7 @@ class persona:
         
 def MenuPrincipal(request):
     
-    vehiculos = Vehiculo.objects.all()
-    datos={
-        'vehiculos':vehiculos
-    }
-    
-    hijo=persona("Juan Perez","7")
-    lista=["Accion","terror","fentinol"]
-    contexto={"nombre":"Claudio Andres", "Categorias":lista,"hijo":hijo,"Vehiculos":vehiculos}
-    return render(request,'core/menuPrincipal.html',contexto)
+    return render(request,'core/menuPrincipal.html')
 
 def INICIOSESION(request):
     if request.method == 'POST':

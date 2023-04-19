@@ -1,5 +1,5 @@
 from django.urls import URLPattern, path
-from .views import home, form_vehiculo, form_mod_vehiculo, listar_mod_vehiculo,form_del_vehiculo,MenuPrincipal,INICIOSESION,RecuperarContra,registro,form_usuario
+from .views import MenuPrincipal,INICIOSESION,RecuperarContra,form_usuario
 
 urlpatterns = [
     path('',MenuPrincipal, name="menuPrincipal"),

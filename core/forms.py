@@ -1,21 +1,8 @@
 from django import forms
 from django.forms import ModelForm
-from  .models import Vehiculo, Usuario
+from  .models import Usuario
 from django.core.validators import validate_email
 import re
-
-class VehiculoForm(forms.ModelForm):
-    class Meta:
-        model = Vehiculo
-        fields = ['patente','marca','modelo','categoria']
-        
-        widget={
-            'patente': forms.TextInput(attrs={'class':'form-comtrol'}),
-            'marca': forms.TextInput(attrs={'class':'form-comtrol'}),
-            'modelo': forms.TextInput(attrs={'class':'form-comtrol'}),
-            'categoria': forms.Select(attrs={'class':'form-control'}),
-        }
-
 
 class UsuarioForm(forms.ModelForm):
     GENERO_CHOICES = (
