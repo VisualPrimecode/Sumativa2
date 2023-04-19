@@ -16,6 +16,7 @@ class VehiculoForm(forms.ModelForm):
             'categoria': forms.Select(attrs={'class':'form-control'}),
         }
 
+
 class UsuarioForm(forms.ModelForm):
     GENERO_CHOICES = (
         ('M', 'Masculino'),
