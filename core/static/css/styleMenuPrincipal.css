@@ -114,7 +114,7 @@ h6 {
 	padding: 2.5rem 0;
 	color: #727272;
 	text-align: center;
-	background-color: #f9f9f9;
+	background-color: #432f67;
 	border-top: .05rem solid #e5e5e5;
 }
 
@@ -135,3 +135,19 @@ h6 {
 		font-size: 3.5rem;
 	}
 }
+
+#closeButton {
+	float: left;
+	font-size: 1.5rem;
+	font-weight: bold;
+	line-height: 1;
+	color: #301c1c;
+	text-shadow: 0 1px 0 #0a0000;
+	opacity: .5;
+  }
+  
+  #closeButton:hover {
+	color: #000;
+	text-decoration: none;
+	opacity: .75;
+  }
