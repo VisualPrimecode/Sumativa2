@@ -1,5 +1,5 @@
 header {
-	background-image: url();
+	background-image: url('/static/img/fondoHOME.jpg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	height: 100px;
@@ -8,12 +8,12 @@ header {
 }
 /* Estilos para el body */
 body {
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
+    background-image: url('/static/img/fondoHOME.jpg');
+    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  
   }
   
   /* Estilos para el contenedor */

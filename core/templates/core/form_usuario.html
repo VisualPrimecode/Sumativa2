@@ -8,9 +8,9 @@
   <title>Registro bar de Mou</title>
   
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styleform_usuario.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/stylesINICIOSESION.css' %}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styleform_usuario.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/stylesINICIOSESION.css' %}">
 
   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
@@ -18,10 +18,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="row">
-        <h1>Crear Usuario</h1>
-    </div>
+    
     <div class="container">
+        <h1>Crear Usuario</h1>
         <div class="row">
             <form action="" method="post" id="formulario">
                 {% csrf_token %}
