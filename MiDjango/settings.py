@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'MiDjango.urls'
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'MiDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/orcl',
+        'NAME': '127.0.0.1:1521/basededatosglobal',
         'USER': 'c##prueba',
         'PASSWORD':'prueba',
         'TEST':{

@@ -3,7 +3,7 @@
 <head>
 	<title>Iniciar sesión</title>
 	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/stylesINICIOSESION.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/stylesInicioSesion.css' %}">
 	
     <!-- Bootstrap core CSS -->
     
@@ -25,7 +25,34 @@
 
 		<p>¿Eres nuevo aquí? <a href="REGISTRO.html">Regístrate</a></p>
 		<p>	<a class="btn btn-sm btn-outline-secondary" href="{% url 'RecuperarContra' %}">¿Olvidaste tu contraseña?</a></p>
-		<button><a href="home.html">Volver al inicio</a></button>
+		<a class="btn btn-sm btn-outline-secondary" href="{% url 'menuPrincipal' %}">Volver al inicio</a>
+
+	</div>
+	<div>
+		<div class="container">
+			<div class="row">
+			  <h1>LISTADO DE USUARIOS</h1>
+			</div>
+			<table border="1">
+			  <tr>
+				<td>Nombre</td>
+				<td>Correo</td>
+				<td>Clave</td>
+				<td>rol</td>
+				<td>genero</td>
+			  </tr>
+			  {% for usuario in usuarios %}
+				<tr>
+				  <td>{{ usuario.nomUser }}</td>
+				  <td>{{ usuario.correo }}</td>
+				  <td>{{ usuario.clave }}</td>
+				  <td>{{ usuario.rol_id }}</td>
+				  <td>{{ usuario.genero_id }}</td>
+				</tr>
+			  {% endfor %}    
+			</table> 
+			
+		  </div>
 	</div>
 </body>
 </html>

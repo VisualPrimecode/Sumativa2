@@ -16,11 +16,6 @@ class VehiculoForm(forms.ModelForm):
             'categoria': forms.Select(attrs={'class':'form-control'}),
         }
 
-from django import forms
-from django.core.exceptions import ValidationError
-from django.core.validators import validate_email
-from .models import Usuario
-
 class UsuarioForm(forms.ModelForm):
     GENERO_CHOICES = (
         ('M', 'Masculino'),
