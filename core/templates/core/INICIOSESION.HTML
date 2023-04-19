@@ -13,7 +13,14 @@
 	<div class="container">
 		<h1>Iniciar sesión</h1>
 		
-		<form>
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+			{% endfor %}
+		{% endif %}
+		
+		<form method="POST">
+			{% csrf_token %}
 			<label for="username">Nombre de Usuario:</label>
 			<input type="text" id="username" name="username" required>
 
@@ -23,8 +30,8 @@
 			<input type="submit" value="Iniciar sesión">
 		</form>
 
-		<p>¿Eres nuevo aquí? <a href="REGISTRO.html">Regístrate</a></p>
-		<p>	<a class="btn btn-sm btn-outline-secondary" href="{% url 'RecuperarContra' %}">¿Olvidaste tu contraseña?</a></p>
+		<p>¿Eres nuevo aquí? <a href="form_usuario">Regístrate</a></p>
+		<p><a class="btn btn-sm btn-outline-secondary" href="{% url 'RecuperarContra' %}">¿Olvidaste tu contraseña?</a></p>
 		<a class="btn btn-sm btn-outline-secondary" href="{% url 'menuPrincipal' %}">Volver al inicio</a>
 
 	</div>
