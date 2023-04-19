@@ -105,9 +105,9 @@
                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-success">Conspiraciones</strong>
-                        <h3 class="mb-0"style="color:white">porque la tierra es plana?</h3>
+                        <h3 class="mb-0"style="color:white">Porque la tierra es plana?</h3>
                         <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="mb-auto"style="color:white">se han dado cuenta que a pesar de que los disque expertos dicen que la tierra es plana cuando uno mira a los lejos no se ve la curvatura,
+                        <p class="mb-auto"style="color:white">Se han dado cuenta que a pesar de que los disque expertos dicen que la tierra es plana cuando uno mira a los lejos no se ve la curvatura,
                         ayer me subi al costanera center para comprobar mi...</p>
                         <a href="#" class="stretched-link">Continua leyendo</a>
                     </div>
@@ -125,12 +125,11 @@
                 </h3>
 
                 <div class="blog-post" style="color: white;">
-                    <h2 class="blog-post-title">ejemplo foro</h2>
+                    <h2 class="blog-post-title">CATEGORIA</h2>
                     <h3>Conspiraciones</h3>
                     <p class="blog-post-meta">febrero 1, 2023 by <a href="#">Mark</a></p>
 
-                    <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap.
-                        Basic typography, images, and code are all supported.</p>
+                    <p>Se han dado cuenta que a pesar de que los disque expertos dicen que la tierra es plana cuando uno mira a los lejos no se ve la curvatura </p>
                     <hr>
                     <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus
                         mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere
@@ -183,11 +182,23 @@
 
             </div>
 
-            <aside class="col-md-4">
+            <aside id="myAside" class="col-md-4" style="position: fixed; bottom: 0; left: 2; right: 2;">
                 <div class="p-4 mb-3 bg-light rounded">
-                    <h4 class="font-italic">Acerca de nosotros</h4>
-                    <p class="mb-0"><em>Somos una empresa que se especializa en soluciones informaticas desde el 2013, si necesitas nuestro servicios puedos contactarnos en el siguiente correo ejemplo@live.cl</p>
+                  <button id="closeButton" class="close">&times;</button>
+                  <h4 class="font-italic">Acerca de nosotros</h4>
+                  <p class="mb-0"><em>Somos una empresa que se especializada en soluciones informaticas desde el 2023, si necesitas nuestro servicios puedos contactarnos en el siguiente correo ejemplo@live.cl</em></p>
                 </div>
+              </aside>
+              
+              <script>
+                const myAside = document.getElementById("myAside");
+                const closeButton = document.getElementById("closeButton");
+          
+                closeButton.addEventListener("click", function() {
+                  myAside.style.display = "none";
+                });
+              </script>
+              
 
                 <div class="p-4">
                     <h4 class="font-italic" style="color:white">Archivos</h4>
