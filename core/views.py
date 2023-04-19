@@ -60,3 +60,4 @@ def form_usuario(request):
             context['form'] = formulario
     return render(request, 'core/form_usuario.html', context)
 
+
