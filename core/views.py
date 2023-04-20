@@ -22,17 +22,24 @@ def INICIOSESION(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
+        try:
+            usuario = Usuario.objects.get(nomUser=username)
+            password_usuario = usuario.clave
+            user = authenticate(request, usuario=username, password_usuario=password)
+            messages.success(request, '¡Credenciales validadas!')
             login(request, user)
             return redirect('menuPrincipal')
-        else:
-            messages.error(request, 'Credenciales inválidas')
+        except Usuario.DoesNotExist:
+            messages.error(request, 'El usuario no existe')
+        except:
+            messages.error(request, f'Credenciales inválidas. Usuario: {username}, Contraseña: {password}')
     usuarios = Usuario.objects.all()
     context = {
         'usuarios': usuarios
     }
     return render(request, 'core/INICIOSESION.html', context)
+
+
 def RecuperarContra(request):
      return render(request,'core/RecuperarContra.html')
 def registro(request):
