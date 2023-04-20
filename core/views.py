@@ -24,7 +24,7 @@ def INICIOSESION(request):
         password = request.POST.get('password')
         try:
             usuario = Usuario.objects.get(nomUser=username)
-            password_usuario = usuario.clave
+            password_usuario = Usuario.objects.get(clave=password)
             user = authenticate(request, usuario=username, password_usuario=password)
             messages.success(request, '¡Credenciales validadas!')
             login(request, user)
