@@ -4,6 +4,8 @@ from .models import Usuario
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.db.models import Q
+
 
 
 
@@ -49,22 +51,30 @@ from django.core.exceptions import ValidationError
 
 def form_usuario(request):
     context = {
-        'form': UsuarioForm()  
+        'form': UsuarioForm()
     }
+
     if request.method == 'POST':
         formulario = UsuarioForm(request.POST)
         if formulario.is_valid():
-            try:
-                usuario = formulario.save(commit=False)
-                
-                usuario.save()
-                context['mensaje'] = "Guardados correctamente"
-            except ValidationError as e:
-                
-                formulario.add_error(None, e)  
+            username = formulario.cleaned_data.get('nomUser')
+            correo = formulario.cleaned_data.get('correo')
+            if Usuario.objects.filter(Q(nomUser=username) | Q(correo=correo)).exists():
+                context['mensaje'] = f"El usuario o correo electrónico ya existe."
+            else:
+                try:
+                    usuario = formulario.save(commit=False)
+                    usuario.save()
+                    context['mensaje'] = "Guardado correctamente"
+                except ValidationError as e:
+                    formulario.add_error(None, e)
         else:
-            
             context['form'] = formulario
+
     return render(request, 'core/form_usuario.html', context)
+
+
+
+
 
 
