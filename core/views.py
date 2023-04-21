@@ -20,26 +20,27 @@ def MenuPrincipal(request):
     
     return render(request,'core/menuPrincipal.html')
 
+
+
 def INICIOSESION(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         try:
             usuario = Usuario.objects.get(nomUser=username)
-            password_usuario = Usuario.objects.get(clave=password)
-            user = authenticate(request, usuario=username, password_usuario=password)
+            password_usuario = usuario.clave
+            user = authenticate(request, username=username, password=password)          
             messages.success(request, '¡Credenciales validadas!')
             login(request, user)
             return redirect('menuPrincipal')
         except Usuario.DoesNotExist:
             messages.error(request, 'El usuario no existe')
-        except:
-            messages.error(request, f'Credenciales inválidas. Usuario: {username}, Contraseña: {password}')
     usuarios = Usuario.objects.all()
     context = {
         'usuarios': usuarios
     }
     return render(request, 'core/INICIOSESION.html', context)
+
 
 
 def RecuperarContra(request):
