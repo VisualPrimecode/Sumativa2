@@ -20,28 +20,8 @@ def MenuPrincipal(request):
     
     return render(request,'core/menuPrincipal.html')
 
-
-
-def INICIOSESION(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        try:
-            usuario = Usuario.objects.get(nomUser=username)
-            password_usuario = usuario.clave
-            user = authenticate(request, username=username, password=password)          
-            messages.success(request, '¡Credenciales validadas!')
-            login(request, user)
-            return redirect('menuPrincipal')
-        except Usuario.DoesNotExist:
-            messages.error(request, 'El usuario no existe')
-    usuarios = Usuario.objects.all()
-    context = {
-        'usuarios': usuarios
-    }
-    return render(request, 'core/INICIOSESION.html', context)
-
-
+import logging
+from django.contrib.auth.hashers import check_password,make_password
 
 def RecuperarContra(request):
      return render(request,'core/RecuperarContra.html')
@@ -74,6 +54,29 @@ def form_usuario(request):
 
     return render(request, 'core/form_usuario.html', context)
 
+def INICIOSESION(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        try:
+            usuario = Usuario.objects.get(nomUser=username)
+            password_usuario = usuario.clave
+           
+            user = authenticate(request, username=username, password=password_usuario)
+            if user is not None:
+                    login(request, user)
+                    return redirect('menuPrincipal')
+            else:    
+                messages.error(request, 'Credenciales inválidas. Usuario o contraseña incorrectos.')
+        except Exception as e:
+            messages.error(request, f'Ocurrió un error al autenticar al usuario: {e}')
+            logging.exception('Error al autenticar al usuario')
+
+    usuarios = Usuario.objects.all()
+    context = {
+        'usuarios': usuarios
+    }
+    return render(request, 'core/INICIOSESION.html', context)
 
 
 
