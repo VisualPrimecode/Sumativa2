@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from  .models import Usuario
 from django.core.validators import validate_email
-import re
+from django.contrib.auth.forms import UserCreationForm
 
 class UsuarioForm(forms.ModelForm):
     GENERO_CHOICES = (
@@ -55,3 +55,5 @@ class UsuarioForm(forms.ModelForm):
         if len(clave) < 8:
             raise forms.ValidationError('La contraseña debe tener al menos 8 caracteres.')
         return clave
+class CustomUserCreatioForm(UserCreationForm):
+    pass

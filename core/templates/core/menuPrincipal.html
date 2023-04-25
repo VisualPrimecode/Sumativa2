@@ -54,9 +54,21 @@
                             <path d="M21 21l-5.2-5.2" />
                         </svg>
                     </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'INICIOSESION' %}">Ingresar</a>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}">cerrar sesion</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ user.username }}</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">Iniciar sesion</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="registro">Registrarse</a>
+                    </li>
+                    {% endif %}
 
-                    <a class="btn btn-sm btn-outline-secondary" href="form_usuario">Registrarse</a>
+                    
                     
                     
                 </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UsuarioForm
+from .forms import UsuarioForm, CustomUserCreatioForm
 from .models import Usuario
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login
@@ -77,6 +77,21 @@ def INICIOSESION(request):
         'usuarios': usuarios
     }
     return render(request, 'core/INICIOSESION.html', context)
+
+def registro(request):
+    data={
+        'form':CustomUserCreatioForm()
+    }
+    if request.method=='POST':
+        formulario = CustomUserCreatioForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+            login(request,user)
+            messages.success(request,"te has registrado correctamente")
+            return redirect('MenuPrincipal')
+        data["form"]=formulario
+    return render(request, 'registration/registro.html',data)
 
 
 
