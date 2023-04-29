@@ -1,10 +1,24 @@
-header {
+body{
 	background-image: url('/static/img/fondoHOME.jpg');
+	
 	background-repeat: no-repeat;
-	background-size: contain;
-	height: 100px;
-	position: relative;
-	z-index: 999;
+	background-attachment: fixed;
+	background-size: cover;
+} 
+.blog-header {
+	line-height: 1;
+	border-bottom: 1px solid #e5e5e5;
+    
+}
+
+.blog-header-logo {
+	font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+	font-size: 2.25rem;
+    color: white;
+}
+
+.blog-header-logo:hover {
+	text-decoration: none;
 }
 /* Estilos para el body */
 body {
@@ -48,15 +62,15 @@ body {
     padding: 10px;
     width: 100%;
   }
-  
-  form input[type="submit"] {
-    background-color: #3e8e41;
+/* este es el style del boton ingresar*/  
+form input[type="submit"] {
+    background-color: #1CB94A;
     border: none;
-    border-radius: 3px;
+    
     color: #fff;
     cursor: pointer;
     font-size: 16px;
-    padding: 10px 20px;
+    
     transition: background-color 0.3s;
   }
   
@@ -64,17 +78,4 @@ body {
     background-color: #2f673a;
   }
   
-  form p {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  form p a {
-    color: #3e8e41;
-    text-decoration: none;
-  }
-  
-  form p a:hover {
-    text-decoration: underline;
-  }
-  
+ 
