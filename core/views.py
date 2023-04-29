@@ -27,6 +27,8 @@ def RecuperarContra(request):
      return render(request,'core/RecuperarContra.html')
 def registro(request):
     return render(request,'core/registro.html')
+def RecuperarClave(request):
+    return render(request,'core/RecuperarClave.html')
 
 from django.core.exceptions import ValidationError
 

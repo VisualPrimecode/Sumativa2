@@ -1,6 +1,5 @@
 from django.urls import path, include
-from .views import MenuPrincipal,INICIOSESION,RecuperarContra,form_usuario,registro
-
+from .views import MenuPrincipal,INICIOSESION,RecuperarContra,form_usuario,registro,RecuperarClave
 urlpatterns = [
     path('',MenuPrincipal, name="menuPrincipal"),
     path('INICIOSESION',INICIOSESION,name="INICIOSESION"),
@@ -8,5 +7,6 @@ urlpatterns = [
     path('form_usuario',form_usuario, name="form_usuario"),
     path('accounts/',include('django.contrib.auth.urls')),
     path('registro/',registro, name="registro"),
+    path('RecuperarClave/',RecuperarClave, name="RecuperarClave"),
     
 ]
