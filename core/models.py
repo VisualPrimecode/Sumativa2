@@ -1,57 +1,91 @@
 from django.db import models
-from django.db.models.signals import post_migrate
-from django.dispatch import receiver
- 
-class Rol(models.Model):
-    idRol=models.IntegerField(primary_key=True, verbose_name='Id de Rol')
-    nomRol= models.CharField(max_length=50, verbose_name='Nombre del Rol')
-     
-    def __str__(self):
-        return self.nomRol
+#from django.db.models.signals import post_migrate
+#from django.dispatch import receiver
+from django.contrib.auth.models import User
 
-class Genero(models.Model):
-    idGenero = models.CharField(max_length=20, primary_key=True)  
-    nombre = models.CharField(max_length=20, verbose_name='Nombre del genero')
-
-    def __str__(self):
-        return self.nombre 
-
-class Usuario(models.Model):
-    nomUser= models.CharField(primary_key=True, max_length=20,verbose_name='Nombre del usuario')
-    correo= models.CharField(max_length=50,verbose_name='Correo electronico')
-    clave= models.CharField(max_length=20,verbose_name='Clave')
-    genero =models.ForeignKey(Genero, on_delete=models.CASCADE) 
-    rol=models.ForeignKey(Rol, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.nomUser
-    
-class Comuna(models.Model):
-    nombre=models.CharField(max_length=50)
-
-class Persona(models.Model):
-    rut = models.CharField(max_length=11, unique=True)
+class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
-    fecha_nacimiento = models.DateField()
-    comuna = models.ForeignKey(Comuna, on_delete=models.PROTECT)
+    
+    def __str__(self):
+        return self.nombre
+
+class Publicacion(models.Model):
+    titulo = models.CharField(max_length=200)
+    contenido = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.titulo
+
+class Respuesta(models.Model):
+    contenido = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    publicacion = models.ForeignKey(Publicacion, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.contenido
+
+
+
+
+
+
+
+#########################################antigua tabla usuario####################################### 
+# class Rol(models.Model):
+#    idRol=models.IntegerField(primary_key=True, verbose_name='Id de Rol')
+#   nomRol= models.CharField(max_length=50, verbose_name='Nombre del Rol')
+     
+#    def __str__(self):
+#        return self.nomRol
+
+#class Genero(models.Model):
+#    idGenero = models.CharField(max_length=20, primary_key=True)  
+ #   nombre = models.CharField(max_length=20, verbose_name='Nombre del genero')
+
+  #  def __str__(self):
+   #     return self.nombre 
+
+#class Usuario(models.Model):
+ #   nomUser= models.CharField(primary_key=True, max_length=20,verbose_name='Nombre del usuario')
+  #  correo= models.CharField(max_length=50,verbose_name='Correo electronico')
+   # clave= models.CharField(max_length=20,verbose_name='Clave')
+    #genero =models.ForeignKey(Genero, on_delete=models.CASCADE) 
+    #rol=models.ForeignKey(Rol, on_delete=models.CASCADE)
+    
+    #def __str__(self):
+    #    return self.nomUser
+    
+#class Comuna(models.Model):
+#    nombre=models.CharField(max_length=50)
+
+#class Persona(models.Model):
+#    rut = models.CharField(max_length=11, unique=True)
+#    nombre = models.CharField(max_length=50)
+#    fecha_nacimiento = models.DateField()
+#    comuna = models.ForeignKey(Comuna, on_delete=models.PROTECT)
     
 
 # Función para crear instancias iniciales de Genero y Rol
-@receiver(post_migrate)
-def create_initial_data(sender, **kwargs):
+#@receiver(post_migrate)
+#def create_initial_data(sender, **kwargs):
     # Crear instancias de Genero si no existen
-    if not Genero.objects.exists():
-        generos = [
-            Genero(idGenero='M', nombre='Masculino'),
-            Genero(idGenero='F', nombre='Femenino'),
-            Genero(idGenero='O', nombre='Otros')
-        ]
-        Genero.objects.bulk_create(generos)
+#    if not Genero.objects.exists():
+#        generos = [
+#            Genero(idGenero='M', nombre='Masculino'),
+#            Genero(idGenero='F', nombre='Femenino'),
+#            Genero(idGenero='O', nombre='Otros')]       ]
+    #    Genero.objects.bulk_create(generos)
 
     # Crear instancias de Rol si no existen
-    if not Rol.objects.exists():
-        roles = [
-            Rol(idRol=1, nomRol='Administrador'),
-            Rol(idRol=2, nomRol='Usuario')
-        ]
-        Rol.objects.bulk_create(roles)
+    #if not Rol.objects.exists():
+     #   roles = [
+     #       Rol(idRol=1, nomRol='Administrador'),
+      #      Rol(idRol=2, nomRol='Usuario')
+       # ]
+        #Rol.objects.bulk_create(roles)
+        
+        
