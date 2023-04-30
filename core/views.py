@@ -4,17 +4,13 @@ from .forms import CustomUserCreatioForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import QF
 
 
 
 
 # Create your views here.
-class persona:
-    def __init__(self, nombre, edad):
-        self.nombre=nombre
-        self.edad=edad
-        super().__init__()
+
         
 def MenuPrincipal(request):
     
@@ -23,10 +19,6 @@ def MenuPrincipal(request):
 import logging
 from django.contrib.auth.hashers import check_password,make_password
 
-def RecuperarContra(request):
-     return render(request,'core/RecuperarContra.html')
-def registro(request):
-    return render(request,'core/registro.html')
 def RecuperarClave(request):
     return render(request,'core/RecuperarClave.html')
 

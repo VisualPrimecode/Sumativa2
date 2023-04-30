@@ -36,7 +36,7 @@
                         {% csrf_token %}
                         {{form}}
                         <input type="submit" value="Ingresar" class="btn btn-success">
-                        <a href="{%url 'RecuperarContra'%}" class="btn btn-success float-right">Recuperar Contraseña</a>
+                        <a href="{%url 'RecuperarClave'%}" class="btn btn-success float-right">Recuperar Contraseña</a>
                         <a href="{% url 'registro' %}"class="btn btn-success float-right">¿No estas Registrado?</a>
                         
                     </form>
